@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header>
           <div className="wrap bar">
-            <Link href="/" className="mark">{MARK}<span>Worth</span></Link>
+            <Link href="/" className="mark"><svg aria-hidden viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" fill="none" stroke="#d4af37" stroke-width="1.8"/><path d="M7.5 12.2 10.6 15.3 16.5 8.8" fill="none" stroke="#d4af37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{MARK}<span>Worth</span></Link>
             <nav>
               <Link href="/products">Products</Link>
               <Link href="/compare">Vs reviews</Link>
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer>
           <div className="wrap foot">
             <div>
-              <p className="mark light">{MARK}<span>Worth</span></p>
+              <p className="mark light"><svg aria-hidden viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" fill="none" stroke="#d4af37" stroke-width="1.8"/><path d="M7.5 12.2 10.6 15.3 16.5 8.8" fill="none" stroke="#d4af37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{MARK}<span>Worth</span></p>
               <p className="note">{DESC}</p>
             </div>
             <div>
