@@ -1,4 +1,5 @@
 
+export const MARK = "Car";
 export const SITE = "CarWorth";
 export const DOMAIN = "https://car.theworthguide.com";
 export const TAG = "carworth20-20";
