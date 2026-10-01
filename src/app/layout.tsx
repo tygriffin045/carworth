@@ -13,6 +13,7 @@ const family = [
 ];
 
 export const metadata = {
+  verification: { google: "FN6qrZKJIgH6gtQS2rIEQe-jjDmKVIUoBq3DwQUX8yk" },
   title: { default: SITE, template: "%s · " + SITE },
   description: DESC,
   metadataBase: new URL(DOMAIN),
