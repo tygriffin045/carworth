@@ -3,7 +3,7 @@ import { categories, products, compares, url, DESC } from "@/data/site";
 
 function picture(p: { image?: string; asin?: string }) {
   if (p.image) return p.image;
-  if (p.asin) return `https://m.media-amazon.com/images/P/${p.asin}.01._SCLZZZZZZZ_.jpg`;
+  if (p.asin) return `/products/${p.asin}.jpg`;
   return "";
 }
 
