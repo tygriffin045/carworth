@@ -23,7 +23,7 @@ export default function Page() {
       <section key={lane.key}>
         <h2>{lane.label}</h2>
         <div className="grid">{products.filter((p) => lane.slugs.includes(p.slug)).map((p) => (
-          <a key={p.slug} className="card" href={url(p)}>{picture(p) && <img src={picture(p)} alt={p.name}/>}<span className="badge">{lane.label}</span><h3>{p.name}</h3><p className="note">{p.tagline}</p><strong>{p.price}</strong></a>
+          <a key={p.slug} className="card" href={url(p)}>{picture(p) && <img src={picture(p)} alt={p.name}/>}<span className="badge">{lane.label}</span><h3>{p.name}</h3><p className="note">{p.tagline}</p><span className="cta">Check price on Amazon</span></a>
         ))}</div>
       </section>
     ))}

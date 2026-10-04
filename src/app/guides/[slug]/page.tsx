@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <h2>Quick picks</h2>
       <ol className="quick">{picks.map(({ pick, product }) => <li key={product.slug}>
         <span className="award">{pick.award}</span>
-        <a href={`#pick-${product.slug}`}><strong>{product.name}</strong></a> <span className="note">· {product.price}</span>
+        <a href={`#pick-${product.slug}`}><strong>{product.name}</strong></a>
         <p className="note">{pick.quickNote}</p>
       </li>)}</ol>
     </section>
@@ -46,7 +46,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     {picks.map(({ pick, product }, i) => <section key={product.slug} id={`pick-${product.slug}`} className="pick">
       <span className="award">{i + 1}. {pick.award}</span>
       <h2>{product.name}</h2>
-      <p className="note">{product.price}</p>
       {product.image && <a href={url(product)} rel="nofollow sponsored noopener" target="_blank" className="shot"><img src={product.image} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>}
       <p>{pick.verdict}</p>
       <div className="pc">
