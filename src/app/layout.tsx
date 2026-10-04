@@ -1,5 +1,10 @@
 import "./globals.css";
 import Link from "next/link";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { SiteHeader, Mark } from "@/components/SiteHeader";
+
+const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-sans", display: "swap" });
+const serif = Source_Serif_4({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-serif", display: "swap" });
 import { SITE, DOMAIN, DESC, MARK } from "@/data/site";
 
 const family = [
@@ -30,28 +35,18 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
-        <header>
-          <div className="wrap bar">
-            <Link href="/" className="mark"><svg aria-hidden viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" fill="none" stroke="#d4af37" stroke-width="1.8"/><path d="M7.5 12.2 10.6 15.3 16.5 8.8" fill="none" stroke="#d4af37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{MARK}<span>Worth</span></Link>
-            <nav>
-              <Link href="/products">Products</Link>
-              <Link href="/compare">Vs reviews</Link>
-              <Link href="/guides">Guides</Link>
-              <Link href="https://theworthguide.com/">The Worth Guide</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="wrap">{children}</main>
+        <SiteHeader mark={MARK} />
+        <main className="wrap"><p className="note-top">We may earn a commission from qualifying purchases.</p>{children}</main>
         <footer>
           <div className="wrap foot">
             <div>
-              <p className="mark light"><svg aria-hidden viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" fill="none" stroke="#d4af37" stroke-width="1.8"/><path d="M7.5 12.2 10.6 15.3 16.5 8.8" fill="none" stroke="#d4af37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{MARK}<span>Worth</span></p>
+              <p className="mark light"><Mark />{MARK}<span>Worth</span></p>
               <p className="note">{DESC}</p>
             </div>
             <div>
-              <p className="label">The family</p>
+              <p className="label">The Worth Guide family</p>
               <ul className="sites">
                 {family.map(([label, href]) => (
                   <li key={label}><Link href={href}>{label}</Link></li>
