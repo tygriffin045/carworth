@@ -9,7 +9,16 @@ const family = [
   ["SleepWorth", "https://sleep.theworthguide.com/"],
   ["PetWorth", "https://pet.theworthguide.com/"],
   ["TechWorth", "https://tech.theworthguide.com/"],
-  ["CarWorth", "https://car.theworthguide.com/"],
+  ["KitchenWorth", "https://kitchen.theworthguide.com/"],
+  ["CleanWorth", "https://clean.theworthguide.com/"],
+  ["ToolWorth", "https://tool.theworthguide.com/"],
+  ["YardWorth", "https://yard.theworthguide.com/"],
+  ["BagWorth", "https://bag.theworthguide.com/"],
+  ["GroomWorth", "https://groom.theworthguide.com/"],
+  ["FitWorth", "https://fit.theworthguide.com/"],
+  ["BathWorth", "https://bath.theworthguide.com/"],
+  ["TravelWorth", "https://travel.theworthguide.com/"],
+  ["WatchWorth", "https://watch.theworthguide.com/"],
 ];
 
 export const metadata = {
@@ -42,13 +51,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div>
               <p className="label">The family</p>
-              <ul>
+              <ul className="sites">
                 {family.map(([label, href]) => (
                   <li key={label}><Link href={href}>{label}</Link></li>
                 ))}
               </ul>
             </div>
-            <p className="note">As an Amazon Associate we earn from qualifying purchases. Honest picks, no invented scores.</p>
+            <p className="note small">We may earn a commission when you buy through links on this site. As an Amazon Associate I earn from qualifying purchases.</p>
           </div>
         </footer>
       </body>
