@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { DOMAIN, categories, compares } from "@/data/site";
+import { guides } from "@/data/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -9,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/compare",
     ...categories.map((c) => `/categories/${c.slug}`),
     ...compares.map((c) => `/compare/${c.slug}`),
+    "/guides",
+    ...guides.map((g) => `/guides/${g.slug}`),
   ];
   return paths.map((path) => ({
     url: `${DOMAIN}${path === "/" ? "/" : path}`,
