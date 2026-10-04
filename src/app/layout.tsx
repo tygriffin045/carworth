@@ -1,10 +1,11 @@
 import "./globals.css";
 import Link from "next/link";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteHeader, Mark } from "@/components/SiteHeader";
 
-const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-sans", display: "swap" });
-const serif = Source_Serif_4({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-serif", display: "swap" });
+// Source Sans 3 / Source Serif 4 (OFL), self-hosted latin variable files so builds never depend on a Google Fonts fetch.
+const sans = localFont({ src: "./fonts/SourceSans3-latin.woff2", weight: "400 700", variable: "--font-sans", display: "swap" });
+const serif = localFont({ src: "./fonts/SourceSerif4-latin.woff2", weight: "600 700", variable: "--font-serif", display: "swap" });
 import { SITE, DOMAIN, DESC, MARK } from "@/data/site";
 
 const family = [
