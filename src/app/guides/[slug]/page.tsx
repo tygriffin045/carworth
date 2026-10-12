@@ -46,14 +46,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     {picks.map(({ pick, product }, i) => <section key={product.slug} id={`pick-${product.slug}`} className="pick">
       <span className="award">{i + 1}. {pick.award}</span>
       <h2>{product.name}</h2>
-      {product.image && <a href={url(product)} rel="nofollow sponsored noopener" target="_blank" className="shot"><img src={product.image} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>}
+      {product.imageUrl && <a href={url(product)} rel="sponsored nofollow noopener" target="_blank" className="shot" aria-label={`Check price on Amazon for ${product.name}`}><img src={product.imageUrl} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>}
       <p>{pick.verdict}</p>
       <div className="pc">
         <div className="pros"><h3>Pros</h3><ul>{pick.pros.map((x) => <li key={x}>{x}</li>)}</ul></div>
         <div className="cons"><h3>Cons</h3><ul>{pick.cons.map((x) => <li key={x}>{x}</li>)}</ul></div>
       </div>
       <p><strong>Best for:</strong> {pick.bestFor}</p>
-      <a className="btn" href={url(product)} rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a>
+      <a className="btn" href={url(product)} rel="sponsored nofollow noopener" target="_blank" aria-label={`Check price on Amazon for ${product.name}`}>Check price on Amazon</a>
     </section>)}
 
     <section className="panel">

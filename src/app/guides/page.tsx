@@ -16,7 +16,7 @@ export default function Page() {
     <div className="grid">{guides.map((g) => {
       const lead = products.find((p) => p.slug === g.picks[0]?.slug);
       return <Link key={g.slug} className="card" href={`/guides/${g.slug}`}>
-        {lead?.image && <img src={lead.image} alt={lead.name}/>}
+        {lead?.imageUrl && <img src={lead.imageUrl} alt={lead.name}/>}
         <span className="badge">{g.picks.length} picks · {g.readingTime}</span>
         <h3>{g.title}</h3>
         <p className="note">{g.description}</p>

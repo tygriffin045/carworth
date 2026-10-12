@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run validate:revamp && node scripts/check-no-prices.mjs src && next build && node scripts/check-no-prices.mjs .next/server/app",
+    "start": "next start",
+    "check:prices": "node scripts/check-no-prices.mjs src",
+    "validate:revamp": "tsc scripts/validate-revamp.ts --outDir .revamp-check --module commonjs --target es2020 --moduleResolution node --skipLibCheck --esModuleInterop --jsx preserve --baseUrl . --paths null && node .revamp-check/scripts/validate-revamp.js"
   },
   "dependencies": {
     "next": "^15.5.4",

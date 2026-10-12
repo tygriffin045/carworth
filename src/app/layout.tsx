@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </ul>
             </div>
-            <p className="note small">We may earn a commission when you buy through links on this site. As an Amazon Associate I earn from qualifying purchases.</p>
+            <p className="note small">As an Amazon Associate I earn from qualifying purchases.</p>
           </div>
         </footer>
       <script src="https://theworthguide.com/visit.js" defer></script></body>
