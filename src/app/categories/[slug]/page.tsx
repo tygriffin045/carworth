@@ -16,3 +16,5 @@ export default async function Page({ params }: { params: Promise<{slug:string}> 
   const list = products.filter(p => p.category === slug).slice(0, 10);
   return <div><h1>{cat.name}</h1><p className="note">{cat.desc}</p><div className="grid">{list.map(p => <a key={p.slug} className="card" href={url(p)}>{picture(p) && <img src={picture(p)} alt={p.name}/>}<span className="badge">{p.verdict}</span><h3>{p.name}</h3><p className="note">{p.tagline}</p><span className="cta">Check price on Amazon</span></a>)}</div></div>;
 }
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; return { alternates: { canonical: `/categories/${slug}` } }; }

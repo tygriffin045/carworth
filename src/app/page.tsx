@@ -35,3 +35,5 @@ export default function Page() {
     <div className="grid">{compares.map((c) => <Link key={c.slug} className="card" href={"/compare/"+c.slug}><h3>{c.title}</h3><p className="note">{c.verdict}</p></Link>)}</div>
   </div>;
 }
+
+export const metadata = { alternates: { canonical: "/" } };
