@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <SiteHeader mark={MARK} />
-        <main className="wrap"><p className="note-top">We may earn a commission from qualifying purchases.</p>{children}</main>
+        <main className="wrap"><p className="note-top">We research products from Amazon listing details, specs, and ratings; we have not tested them hands-on. We may earn a commission from qualifying purchases.</p>{children}</main>
         <footer>
           <div className="wrap foot">
             <div>

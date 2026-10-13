@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { categories } from "@/data/categories";
-import { getTopPicks, PICKS } from "@/data/top10";
+import { getTopPicks, PICKS, PICK_NOTE, CATEGORY_NOTE } from "@/data/top10";
 import { Picks } from "@/components/Picks";
 import { ProductBlock } from "@/components/ProductBlock";
 
@@ -11,10 +11,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (!cat) notFound();
   const list = getTopPicks(slug);
   const pk = PICKS[slug];
-  const label = (s: string) => (s === pk?.best ? "Best Overall" : s === pk?.premium ? "Premium Pick" : s === pk?.value ? "Value Pick" : undefined);
+  const role = (s: string) => (s === pk?.best ? "Best Overall" : s === pk?.premium ? "Premium Pick" : s === pk?.value ? "Value Pick" : undefined);
+  const label = (s: string) => { const r = role(s); return r && PICK_NOTE[s] ? `${r} · ${PICK_NOTE[s]}` : r; };
   return <div>
     <h1>{cat.name}</h1>
     <p className="note">{cat.desc}</p>
+    {CATEGORY_NOTE[slug] && <p className="note">{CATEGORY_NOTE[slug]}</p>}
     <Picks category={slug} />
     <h2>Top {list.length}: {cat.name.toLowerCase()}</h2>
     <div className="list">{list.map((p) => <ProductBlock key={p.slug} p={p} label={label(p.slug)} />)}</div>

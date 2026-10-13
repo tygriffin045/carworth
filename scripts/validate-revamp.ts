@@ -2,7 +2,7 @@
 import { products } from "../src/data/products";
 import { categories } from "../src/data/categories";
 import { guides } from "../src/data/guides";
-import { TOP10, PICKS, getTopPicks, TOP10_SHORT } from "../src/data/top10";
+import { TOP10, PICKS, getTopPicks, TOP10_SHORT, TOP10_MIN } from "../src/data/top10";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -12,7 +12,7 @@ const TIERS = new Set(["$", "$$", "$$$"]);
 const R: Record<string, number> = { $: 1, $$: 2, $$$: 3 };
 const CAT = new Set(categories.map((c) => c.slug));
 /** Categories allowed to omit Premium (spec exception). None on car. */
-const OPTIONAL_PREMIUM = new Set<string>([]);
+const OPTIONAL_PREMIUM = new Set<string>(["cabin", "cleaning"]); // Maya: no clear cabin upgrade; cleaning Premium dropped
 /** Categories whose rating claims (amps, PSI, mAh, Wh, engine litres, lumens) must be hedged. */
 const SAFETY_CATS = new Set(["roadside", "safety"]);
 const RATING = /\b\d[\d,.]*\s?(A|amps?|PSI|mAh|Wh|L|lumens|gauge)\b/i;
@@ -73,8 +73,9 @@ for (const c of categories) {
   if (new Set(list).size !== list.length) errors.push(`${c.slug}: duplicate slug in Top 10`);
   const n = getTopPicks(c.slug).length;
   if (TOP10_SHORT[c.slug]) {
-    if (n < 7 || n > 10) errors.push(`${c.slug}: short list has ${n} items (allowed 7-10: ${TOP10_SHORT[c.slug]})`);
-    else if (n < 10) warnings.push(`${c.slug}: Top list has ${n} items (PENDING acceptance: ${TOP10_SHORT[c.slug]})`);
+    const min = TOP10_MIN[c.slug] ?? 7;
+    if (n < min || n > 10) errors.push(`${c.slug}: short list has ${n} items (allowed ${min}-10: ${TOP10_SHORT[c.slug]})`);
+    else if (n < 10) warnings.push(`${c.slug}: Top list has ${n} items (accepted: ${TOP10_SHORT[c.slug]})`);
   } else if (n !== 10) errors.push(`${c.slug}: Top 10 has ${n} items (need exactly 10)`);
   const pk = PICKS[c.slug];
   if (!pk) { errors.push(`${c.slug}: missing picks`); continue; }

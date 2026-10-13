@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { categories, compares, DESC } from "@/data/site";
+import { categories, compares, DESC, DOMAIN } from "@/data/site";
 import { guides } from "@/data/guides";
-import { getHomeTop10 } from "@/data/top10";
+import { getHomeTop10, PICK_NOTE } from "@/data/top10";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { TierBadge } from "@/components/TierBadge";
 
@@ -10,6 +10,7 @@ const ROLE = { best: "Best Overall", premium: "Premium Pick", value: "Value Pick
 export default function Page() {
   const top = getHomeTop10();
   return <div>
+    <link rel="canonical" href={`${DOMAIN}/`} />
     <p className="note">Independent picks</p>
     <h1>Keep the kit that earns the trunk.</h1>
     <p>{DESC}</p>
@@ -20,7 +21,7 @@ export default function Page() {
       return <article key={category + role} className="card">
         {p.imageUrl && <img src={p.imageUrl} alt={p.name} />}
         <div>
-          <span className="badge">{cat.name} · {ROLE[role]}</span>
+          <span className="badge">{cat.name} · {ROLE[role]}{PICK_NOTE[p.slug] ? ` · ${PICK_NOTE[p.slug]}` : ""}</span>
           <h3><Link href={`/categories/${category}#${p.slug}`}>{p.name}</Link> <TierBadge tier={p.tier} /></h3>
           <p className="note">{p.tagline}</p>
           <AffiliateButton asin={p.amazonAsin} name={p.name} />
@@ -36,4 +37,5 @@ export default function Page() {
   </div>;
 }
 
-export const metadata = { alternates: { canonical: "/" } };
+// Root canonical rendered directly: Next metadata strips the trailing slash from the root URL, and the sitemap lists it with one.
+export const metadata = {};

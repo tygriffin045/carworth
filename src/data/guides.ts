@@ -60,6 +60,7 @@ export const guides: Guide[] = [
       { heading: "Safety features", body: "Look for clamp protection against reverse polarity and sparks. A name-brand pack like NOCO is the safe default if you're unsure." },
       { heading: "Extras worth having", body: "A built-in air compressor (GOOLOO A3), a USB power bank, or a work light make a pack more useful between dead batteries." },
       { heading: "Keep it charged", body: "A jump pack only helps if it's charged. Top it up every few months and after each use." },
+      { heading: "Heat and storage", body: "Lithium packs generally don't like extreme heat. A car parked in summer sun can get far hotter than the outside air, so check the storage temperature range on the listing and consider keeping the pack in the trunk or out of direct sun, or bringing it inside during heat waves." },
     ],
     sections: [
       { heading: "Our shortlist", body: "Most drivers should get the NOCO Boost GB40. If you want a tire inflator too, the GOOLOO A3 combines both. For trucks and diesels, choose the S ZEVZO ET03 or the higher-rated OXILAM. If your battery dies because the car sits, buy the Battery Tender Junior instead." },
@@ -136,6 +137,7 @@ export const guides: Guide[] = [
       { heading: "Front-only or front and rear", body: "A front camera covers most incidents. A rear camera helps with rear-end collisions and costs a bit more to buy and install." },
       { heading: "Heat", body: "Parked cars get hot. Supercapacitor cams, like the VIOFO A119 Mini 2, are generally better suited to heat than battery-powered ones." },
       { heading: "Resolution and card size", body: "2K is plenty for most drivers; 4K captures more detail but fills cards faster. Budget for a high-endurance card if one isn't included." },
+      { heading: "Where you can mount it", body: "Windshield-mounting rules vary by state. Some states, such as California and Minnesota, limit where a camera can sit on the windshield, often to a small area at a corner or behind the mirror, so check your state's current rules before you mount a camera." },
       { heading: "Parking mode", body: "If you want recording while parked, check for a parking monitor and plan for a hardwire kit or another constant power source." },
     ],
     sections: [

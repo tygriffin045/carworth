@@ -1,4 +1,4 @@
-import { getPicks } from "@/data/top10";
+import { getPicks, PICK_NOTE } from "@/data/top10";
 import type { Product } from "@/data/types";
 import { AffiliateButton } from "./AffiliateButton";
 import { TierBadge } from "./TierBadge";
@@ -13,7 +13,7 @@ export function Picks({ category }: { category: string }) {
       <p className="note">Chosen from the Top 10 below. Budget tiers: $ budget · $$ mid-range · $$$ premium.</p>
       <div className="grid">{rows.map(([kind, p]) => (
         <article key={kind} className="card" data-pick={kind}>
-          <span className="badge">{LBL[kind]}</span>
+          <span className="badge">{LBL[kind]}{PICK_NOTE[p.slug] ? ` · ${PICK_NOTE[p.slug]}` : ""}</span>
           {p.imageUrl && <img src={p.imageUrl} alt={p.name} />}
           <h3><a href={`#${p.slug}`}>{p.name}</a> <TierBadge tier={p.tier} /></h3>
           <p className="note">{p.tagline}</p>
