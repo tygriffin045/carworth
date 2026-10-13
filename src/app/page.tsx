@@ -1,39 +1,41 @@
 import Link from "next/link";
-import { categories, products, compares, url, DESC } from "@/data/site";
+import { categories, compares, DESC, DOMAIN } from "@/data/site";
 import { guides } from "@/data/guides";
+import { getHomeTop10, PICK_NOTE } from "@/data/top10";
+import { AffiliateButton } from "@/components/AffiliateButton";
+import { TierBadge } from "@/components/TierBadge";
 
-function picture(p: { image?: string; asin?: string }) {
-  if (p.image) return p.image;
-  if (p.asin) return `/products/${p.asin}.jpg`;
-  return "";
-}
-
-const lanes = [
-  { key: "pick", label: "Worth Guide pick", slugs: ["viofo", "noco", "blue", "fanttik"] },
-  { key: "value", label: "Value pick", slugs: ["galphi-4k-dash-cam-front", "gooloo-a3-12v-3000a-portable-jump", "ancel-ad310-classic-enhanced-universal-obd", "astroai-l7-tire-inflator-portable-air"] },
-  { key: "glovebox", label: "Glovebox essential", slugs: ["tender", "iottie", "resqme-the-original-compact-emergency-keychain", "rainx"] },
-];
+const ROLE = { best: "Best Overall", premium: "Premium Pick", value: "Value Pick" } as const;
 
 export default function Page() {
+  const top = getHomeTop10();
   return <div>
-    <p className="note">Independent reviews</p>
+    <link rel="canonical" href={`${DOMAIN}/`} />
+    <p className="note">Independent picks</p>
     <h1>Keep the kit that earns the trunk.</h1>
     <p>{DESC}</p>
-    {lanes.map((lane) => (
-      <section key={lane.key}>
-        <h2>{lane.label}</h2>
-        <div className="grid">{products.filter((p) => lane.slugs.includes(p.slug)).map((p) => (
-          <a key={p.slug} className="card" href={url(p)}>{picture(p) && <img src={picture(p)} alt={p.name}/>}<span className="badge">{lane.label}</span><h3>{p.name}</h3><p className="note">{p.tagline}</p><span className="cta">Check price on Amazon</span></a>
-        ))}</div>
-      </section>
-    ))}
-    <h2>Top 10 by job</h2>
-    <div className="grid">{categories.map((c) => <Link key={c.slug} className="card" href={"/categories/"+c.slug}><h3>{c.name}</h3><p className="note">{c.desc}</p><strong>Top {Math.min(10, products.filter((p) => p.category === c.slug).length)}</strong></Link>)}</div>
+    <h2>Top 10 worth buying</h2>
+    <p className="note">The Best Overall from each category, plus four picks chosen on purpose. Budget tiers: $ budget · $$ mid-range · $$$ premium.</p>
+    <div className="compact">{top.map(({ category, role, p }) => {
+      const cat = categories.find((c) => c.slug === category)!;
+      return <article key={category + role} className="card">
+        {p.imageUrl && <img src={p.imageUrl} alt={p.name} />}
+        <div>
+          <span className="badge">{cat.name} · {ROLE[role]}{PICK_NOTE[p.slug] ? ` · ${PICK_NOTE[p.slug]}` : ""}</span>
+          <h3><Link href={`/categories/${category}#${p.slug}`}>{p.name}</Link> <TierBadge tier={p.tier} /></h3>
+          <p className="note">{p.tagline}</p>
+          <AffiliateButton asin={p.amazonAsin} name={p.name} />
+        </div>
+      </article>;
+    })}</div>
+    <h2>Browse by category</h2>
+    <div className="grid">{categories.map((c) => <Link key={c.slug} className="card" href={"/categories/" + c.slug}><h3>{c.name}</h3><p className="note">{c.desc}</p></Link>)}</div>
     <h2>Buying guides</h2>
-    <div className="grid">{guides.map((g) => <Link key={g.slug} className="card" href={"/guides/"+g.slug}><h3>{g.title}</h3><p className="note">{g.description}</p><strong>{g.picks.length} picks</strong></Link>)}</div>
+    <div className="grid">{guides.map((g) => <Link key={g.slug} className="card" href={"/guides/" + g.slug}><h3>{g.title}</h3><p className="note">{g.description}</p><strong>{g.picks.length} picks</strong></Link>)}</div>
     <h2>Vs reviews</h2>
-    <div className="grid">{compares.map((c) => <Link key={c.slug} className="card" href={"/compare/"+c.slug}><h3>{c.title}</h3><p className="note">{c.verdict}</p></Link>)}</div>
+    <div className="grid">{compares.map((c) => <Link key={c.slug} className="card" href={"/compare/" + c.slug}><h3>{c.title}</h3><p className="note">{c.verdict}</p></Link>)}</div>
   </div>;
 }
 
-export const metadata = { alternates: { canonical: "/" } };
+// Root canonical rendered directly: Next metadata strips the trailing slash from the root URL, and the sitemap lists it with one.
+export const metadata = {};
