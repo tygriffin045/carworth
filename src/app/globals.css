@@ -61,3 +61,15 @@ nav a[aria-current=page] { background:var(--ink); color:#fafaf9; } nav a.hub { c
 .compact .card{display:flex;gap:.75rem;align-items:center;padding:.6rem}.compact img{width:64px;height:64px;object-fit:contain;flex:none}
 .compact h3{font-size:1rem;margin:.1rem 0}
 img{max-width:100%;height:auto}
+
+/* Sticky Amazon bar (gift guides) */
+.stickybar { position:fixed; left:0; right:0; bottom:env(safe-area-inset-bottom, 0px); margin:0; z-index:40; background:rgba(255,255,255,.96); border-top:2px solid var(--line); box-shadow:0 -4px 16px rgba(0,0,0,.08); padding:10px 0; transition:transform .2s, visibility .2s; }
+.stickybar.off { transform:translateY(calc(100% + env(safe-area-inset-bottom, 0px))); visibility:hidden; pointer-events:none; }
+.stickybar-in { display:flex; align-items:center; gap:12px; }
+.stickybar-txt { min-width:0; flex:1; }
+.stickybar-label { margin:0; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--terra); }
+.stickybar-name { margin:0; font-size:.9rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.stickybar .btn { display:inline-block; flex-shrink:0; background:var(--terra); color:#fff; text-decoration:none; font-weight:700; font-size:.92rem; border-radius:999px; padding:11px 18px; }
+.giftlink { margin:16px 0; padding:12px 16px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+.giftlink a { font-weight:700; }
+.guide .award .tier { margin-left:6px; }

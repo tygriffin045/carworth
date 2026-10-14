@@ -62,6 +62,38 @@ for (const g of guides) {
     }
   }
 }
+const GIFT_REQUIRED: [RegExp, RegExp][] = [
+  [/dash-cam|garmin|viofo|rove|70mai|redtiger/i, /windshield-mounting rules/i],
+  [/^(noco|gooloo|oxilam|s-zevzo)\b/i, /extreme heat/i],
+];
+// Gift-guide gate: 6-10 distinct picks covering $, $$ and $$$, first award "Best overall gift", hedging checked
+// against each pick's own category, no price phrasing, and site-specific required safety/privacy lines.
+for (const g of guides) {
+  if (!g.slug.startsWith("gifts-")) continue;
+  if (g.picks.length < 6 || g.picks.length > 10) errors.push(`guide ${g.slug}: ${g.picks.length} picks (need 6-10)`);
+  if (g.picks[0]?.award !== "Best overall gift") errors.push(`guide ${g.slug}: first pick must be "Best overall gift"`);
+  const tiers = new Set<string>();
+  const seen = new Set<string>();
+  for (const pk of g.picks) {
+    const p = products.find((x) => x.slug === pk.slug);
+    if (!p) continue;
+    if (seen.has(p.slug)) errors.push(`guide ${g.slug}: duplicate pick ${p.slug}`);
+    seen.add(p.slug); tiers.add(p.tier);
+    if (pk.pros.length < 2 || pk.pros.length > 4) errors.push(`guide ${g.slug}: ${p.slug} has ${pk.pros.length} pros`);
+    if (pk.cons.length < 1 || pk.cons.length > 3) errors.push(`guide ${g.slug}: ${p.slug} has ${pk.cons.length} cons`);
+    for (const t of [pk.quickNote, pk.verdict, ...pk.pros, ...pk.cons, pk.bestFor]) hedge(`guide ${g.slug}/${p.slug}`, t);
+    const txt = [pk.verdict, ...pk.cons].join(" ");
+    for (const [re, line] of GIFT_REQUIRED) if (re.test(p.slug + " " + p.brand) && !line.test(txt)) errors.push(`guide ${g.slug}: ${p.slug} is missing a required line (${line})`);
+  }
+  for (const t of ["$", "$$", "$$$"]) if (!tiers.has(t)) errors.push(`guide ${g.slug}: no ${t} pick`);
+  const texts = [g.title, g.description, ...g.sections.map((x) => x.body), ...g.criteria.map((x) => x.body), ...g.faqs.map((f) => f.answer), ...g.picks.flatMap((x) => [x.quickNote, x.verdict, x.bestFor, ...x.pros, ...x.cons])];
+  for (const t of texts) {
+    voice(`guide ${g.slug}`, t);
+    if (/under\s*\$|\$\s*\d/i.test(t)) errors.push(`guide ${g.slug}: price phrasing: ${t.slice(0, 60)}`);
+    const m = t.match(/\b(must-have|perfect for everyone|the best ever|a safe gift)\b/i);
+    if (m) errors.push(`guide ${g.slug}: unhedged "${m[0]}": ${t.slice(0, 60)}`);
+  }
+}
 // Top 10 + picks
 for (const c of categories) {
   const list = TOP10[c.slug] ?? [];
