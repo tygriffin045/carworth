@@ -4,6 +4,7 @@ import { guides } from "@/data/guides";
 import { getHomeTop10, PICK_NOTE } from "@/data/top10";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { TierBadge } from "@/components/TierBadge";
+import ImagePlaceholder from "../components/ImagePlaceholder";
 
 const ROLE = { best: "Best Overall", premium: "Premium Pick", value: "Value Pick" } as const;
 
@@ -19,7 +20,7 @@ export default function Page() {
     <div className="compact">{top.map(({ category, role, p }) => {
       const cat = categories.find((c) => c.slug === category)!;
       return <article key={category + role} className="card">
-        {p.imageUrl && <img src={p.imageUrl} alt={p.name} />}
+        {p.imageUrl ? (<img src={p.imageUrl} alt={p.name} />) : (<ImagePlaceholder name={p.name} category={p.category} compact style={{ width: 64, height: 64, aspectRatio: "auto", flex: "none" }} />)}
         <div>
           <span className="badge">{cat.name} · {ROLE[role]}{PICK_NOTE[p.slug] ? ` · ${PICK_NOTE[p.slug]}` : ""}</span>
           <h3><Link href={`/categories/${category}#${p.slug}`}>{p.name}</Link> <TierBadge tier={p.tier} /></h3>

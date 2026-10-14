@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { guides } from "@/data/guides";
 import { products, SITE } from "@/data/site";
+import ImagePlaceholder from "../../components/ImagePlaceholder";
 
 export const metadata = {
   title: "Buying guides",
@@ -16,7 +17,7 @@ export default function Page() {
     <div className="grid">{guides.map((g) => {
       const lead = products.find((p) => p.slug === g.picks[0]?.slug);
       return <Link key={g.slug} className="card" href={`/guides/${g.slug}`}>
-        {lead?.imageUrl && <img src={lead.imageUrl} alt={lead.name}/>}
+        {lead?.imageUrl ? (<img src={lead.imageUrl} alt={lead.name}/>) : (lead ? <ImagePlaceholder name={lead.name} category={lead.category} style={{ aspectRatio: "auto" }} /> : null)}
         <span className="badge">{g.picks.length} picks · {g.readingTime}</span>
         <h3>{g.title}</h3>
         <p className="note">{g.description}</p>

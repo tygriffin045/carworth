@@ -1,11 +1,12 @@
 import type { Product } from "@/data/types";
 import { AffiliateButton } from "./AffiliateButton";
 import { TierBadge } from "./TierBadge";
+import ImagePlaceholder from "./ImagePlaceholder";
 export function ProductBlock({ p, label }: { p: Product; label?: string }) {
   return (
     <article className="card prod" id={p.slug}>
       {label && <span className="badge">{label}</span>}
-      {p.imageUrl && <img src={p.imageUrl} alt={p.name} loading="lazy" />}
+      {p.imageUrl ? (<img src={p.imageUrl} alt={p.name} loading="lazy" />) : (<ImagePlaceholder name={p.name} category={p.category} style={{ aspectRatio: "auto" }} />)}
       <h3>{p.name} <TierBadge tier={p.tier} /></h3>
       <p className="note">{p.tagline}</p>
       <p>{p.summary}</p>
