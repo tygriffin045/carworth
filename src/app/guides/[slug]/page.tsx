@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides } from "@/data/guides";
 import { products, categories, url, DOMAIN, SITE } from "@/data/site";
+import { StickyBar } from "@/components/StickyBar";
+import { TierBadge } from "@/components/TierBadge";
 
 export function generateStaticParams() { return guides.map((g) => ({ slug: g.slug })); }
 
@@ -22,6 +24,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   });
   const cat = categories.find((c) => c.slug === guide.category);
   const others = guides.filter((g) => g.slug !== guide.slug);
+  const isGift = guide.slug.startsWith("gifts-");
+  const lead = picks[0]?.product;
   const pageUrl = `${DOMAIN}/guides/${guide.slug}`;
   const ld: object[] = [
     { "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, datePublished: guide.publishedAt, url: pageUrl, publisher: { "@type": "Organization", name: SITE } },
@@ -37,14 +41,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <section id="quick-picks" className="panel">
       <h2>Quick picks</h2>
       <ol className="quick">{picks.map(({ pick, product }) => <li key={product.slug}>
-        <span className="award">{pick.award}</span>
+        <span className="award">{pick.award}{isGift && <TierBadge tier={product.tier} />}</span>
         <a href={`#pick-${product.slug}`}><strong>{product.name}</strong></a>
         <p className="note">{pick.quickNote}</p>
       </li>)}</ol>
     </section>
 
     {picks.map(({ pick, product }, i) => <section key={product.slug} id={`pick-${product.slug}`} className="pick">
-      <span className="award">{i + 1}. {pick.award}</span>
+      <span className="award">{i + 1}. {pick.award}{isGift && <TierBadge tier={product.tier} />}</span>
       <h2>{product.name}</h2>
       {product.imageUrl && <a href={url(product)} rel="sponsored nofollow noopener" target="_blank" className="shot" aria-label={`Check price on Amazon for ${product.name}`}><img src={product.imageUrl} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>}
       <p>{pick.verdict}</p>
@@ -75,5 +79,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {cat && <li><Link href={`/categories/${cat.slug}`}>Top 10: {cat.name}</Link></li>}
       </ul>
     </section>
+    {isGift && lead && <StickyBar href={url(lead)} productName={lead.name} label="Best overall gift" showAfterId="quick-picks" />}
   </article>;
 }

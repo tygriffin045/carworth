@@ -30,6 +30,7 @@ export default function Page() {
     })}</div>
     <h2>Browse by category</h2>
     <div className="grid">{categories.map((c) => <Link key={c.slug} className="card" href={"/categories/" + c.slug}><h3>{c.name}</h3><p className="note">{c.desc}</p></Link>)}</div>
+    <p className="giftlink">Holiday gift guide: <Link href="/guides/gifts-for-drivers">Gifts for drivers →</Link></p>
     <h2>Buying guides</h2>
     <div className="grid">{guides.map((g) => <Link key={g.slug} className="card" href={"/guides/" + g.slug}><h3>{g.title}</h3><p className="note">{g.description}</p><strong>{g.picks.length} picks</strong></Link>)}</div>
     <h2>Vs reviews</h2>
