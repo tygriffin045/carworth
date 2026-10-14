@@ -1,86 +1,99 @@
 {
- "_note": "INTERNAL ONLY: approximate prices used to set and validate budget tiers. Never import from src/, never render, never ship.",
- "thresholds": {
-  "dash-cams": [
-   90,
-   150
-  ],
-  "roadside": [
-   35,
-   65
-  ],
-  "cabin": [
-   15,
-   50
-  ],
-  "diagnostics": [
-   45,
-   100
-  ],
-  "cleaning": [
-   15,
-   null
-  ],
-  "safety": [
-   20,
-   50
-  ]
- },
- "prices": {
-  "viofo": 130.0,
-  "noco": 100.0,
-  "iottie": 25.0,
-  "blue": 75.0,
-  "amazon-basics-emergency-escape-tool": 9.0,
-  "weather": 120.0,
-  "r7": 400.0,
-  "rove-r2-4k-dual-dash-cam": 150.0,
-  "aukmak-upgraded-4leds-4pcs-wireless-led": 15.0,
-  "fanttik": 70.0,
-  "redtiger-f7np-4k-dash-cam-front": 130.0,
-  "andery-compact-foldable-car-phone-holder": 26.0,
-  "ancel-ad310-classic-enhanced-universal-obd": 24.0,
-  "astroai-21-extra-long-windshield-cleaner": 18.0,
-  "everlit-survival-car-emergency-kit": 70.0,
-  "tender": 40.0,
-  "redtiger-4k-starvis-2-dashcam-front": 140.0,
-  "lisen-retractable-car-charger": 17.0,
-  "cobra-rad-480i-laser-radar-detector": 138.0,
-  "usanooks-microfiber-cleaning-cloth-grey-12": 7.0,
-  "resqme-the-original-compact-emergency-keychain": 15.0,
-  "terunsoul-4k-4k-1080p-3-channel": 117.0,
-  "oxilam-jump-starter-6000a-for-all": 60.0,
-  "vanmass-car-phone-holder-2026-ultimate": 25.0,
-  "fixd-bluetooth-obd2-scanner": 40.0,
-  "invisible-glass-auto-glass-cleaner-foaming": 10.0,
-  "lianxin-car-roadside-emergency-kit-with": 25.0,
-  "galphi-4k-dash-cam-front": 56.0,
-  "astroai-l7-tire-inflator-portable-air": 24.0,
-  "kenhao-67w-3-port-super-fast": 10.0,
-  "uniden-r8w-new-model-extreme-long": 800.0,
-  "amazon-basics-microfiber-cleaning-cloths": 10.0,
-  "smosun-safehammer-2026-upgraded-safe-hammer": 25.0,
-  "zmopo-360-view-4-channel-dash": 100.0,
-  "lamicall-2026-wider-clamp-metal-hook": 13.0,
-  "obdlink-ex-forscan-obd-adapter": 70.0,
-  "homexcel-microfiber-cleaning-cloth-12-pack": 7.0,
-  "mcbazel-4-pcs-wireless-rechargeable-magnetic": 10.0,
-  "garmin-dash-cam-mini-3": 130.0,
-  "gooloo-a3-12v-3000a-portable-jump": 70.0,
-  "junvang-usb-c-car-charger": 13.0,
-  "veepeak-obdcheck-ble-bluetooth-obd-ii": 32.0,
-  "chemical-guys-streak-free-glass-window": 10.0,
-  "sinsen-car-safety-hammer-set-of": 9.0,
-  "viofo-a229-plus-dash-cam-front": 210.0,
-  "noco-genius2d-2a-12v-onboard-battery": 40.0,
-  "wekefon-for-magsafe-car-mount-charger": 27.0,
-  "ancel-ad410-enhanced-obd2-scanner": 39.0,
-  "sycoodeal-car-vacuum-cleaner-mini-vacuum": 21.0,
-  "nealia-magnetic-wireless-beacon-light": 24.0,
-  "70mai-4k-dash-cam-front-and": 110.0,
-  "s-zevzo-et03-car-jump-starter": 54.0,
-  "obdlink-mx-obd2-bluetooth-scanner-for": 140.0,
-  "armor-all-multi-purpose-car-cleaner": 7.0,
-  "swiss-safe-2-in-1-348": 30.0
- }
+  "_note": "INTERNAL ONLY: approximate prices used to set and validate budget tiers. Never import from src/, never render, never ship.",
+  "thresholds": {
+    "dash-cams": [
+      90,
+      150
+    ],
+    "roadside": [
+      35,
+      65
+    ],
+    "cabin": [
+      15,
+      50
+    ],
+    "diagnostics": [
+      45,
+      100
+    ],
+    "cleaning": [
+      15,
+      null
+    ],
+    "safety": [
+      20,
+      50
+    ]
+  },
+  "prices": {
+    "viofo": 130.0,
+    "noco": 100.0,
+    "iottie": 25.0,
+    "blue": 75.0,
+    "amazon-basics-emergency-escape-tool": 9.0,
+    "weather": 120.0,
+    "r7": 400.0,
+    "rove-r2-4k-dual-dash-cam": 150.0,
+    "aukmak-upgraded-4leds-4pcs-wireless-led": 15.0,
+    "fanttik": 70.0,
+    "redtiger-f7np-4k-dash-cam-front": 130.0,
+    "andery-compact-foldable-car-phone-holder": 26.0,
+    "ancel-ad310-classic-enhanced-universal-obd": 24.0,
+    "astroai-21-extra-long-windshield-cleaner": 18.0,
+    "everlit-survival-car-emergency-kit": 70.0,
+    "tender": 40.0,
+    "redtiger-4k-starvis-2-dashcam-front": 140.0,
+    "lisen-retractable-car-charger": 17.0,
+    "cobra-rad-480i-laser-radar-detector": 138.0,
+    "usanooks-microfiber-cleaning-cloth-grey-12": 7.0,
+    "resqme-the-original-compact-emergency-keychain": 15.0,
+    "terunsoul-4k-4k-1080p-3-channel": 117.0,
+    "oxilam-jump-starter-6000a-for-all": 60.0,
+    "vanmass-car-phone-holder-2026-ultimate": 25.0,
+    "fixd-bluetooth-obd2-scanner": 40.0,
+    "invisible-glass-auto-glass-cleaner-foaming": 10.0,
+    "lianxin-car-roadside-emergency-kit-with": 25.0,
+    "galphi-4k-dash-cam-front": 56.0,
+    "astroai-l7-tire-inflator-portable-air": 24.0,
+    "kenhao-67w-3-port-super-fast": 10.0,
+    "uniden-r8w-new-model-extreme-long": 800.0,
+    "amazon-basics-microfiber-cleaning-cloths": 10.0,
+    "smosun-safehammer-2026-upgraded-safe-hammer": 25.0,
+    "zmopo-360-view-4-channel-dash": 100.0,
+    "lamicall-2026-wider-clamp-metal-hook": 13.0,
+    "obdlink-ex-forscan-obd-adapter": 70.0,
+    "homexcel-microfiber-cleaning-cloth-12-pack": 7.0,
+    "mcbazel-4-pcs-wireless-rechargeable-magnetic": 10.0,
+    "garmin-dash-cam-mini-3": 130.0,
+    "gooloo-a3-12v-3000a-portable-jump": 70.0,
+    "junvang-usb-c-car-charger": 13.0,
+    "veepeak-obdcheck-ble-bluetooth-obd-ii": 32.0,
+    "chemical-guys-streak-free-glass-window": 10.0,
+    "sinsen-car-safety-hammer-set-of": 9.0,
+    "viofo-a229-plus-dash-cam-front": 210.0,
+    "noco-genius2d-2a-12v-onboard-battery": 40.0,
+    "wekefon-for-magsafe-car-mount-charger": 27.0,
+    "ancel-ad410-enhanced-obd2-scanner": 39.0,
+    "sycoodeal-car-vacuum-cleaner-mini-vacuum": 21.0,
+    "nealia-magnetic-wireless-beacon-light": 24.0,
+    "70mai-4k-dash-cam-front-and": 110.0,
+    "s-zevzo-et03-car-jump-starter": 54.0,
+    "obdlink-mx-obd2-bluetooth-scanner-for": 140.0,
+    "armor-all-multi-purpose-car-cleaner": 7.0,
+    "swiss-safe-2-in-1-348": 30.0,
+    "veement-v300-1296p-dash-cam": 24.98,
+    "clore-jump-n-carry-jnc660": 126.02,
+    "schumacher-sc1280-battery-charger": 64.99,
+    "anker-323-car-charger": 15.19,
+    "andobil-magsafe-vent-mount-pro": 28.49,
+    "foxwell-nt301-obd2-scanner": 59.59,
+    "autel-al319-code-reader": 29.99,
+    "foxwell-nt604-elite-scanner": 135.95,
+    "thisworx-corded-car-vacuum": 20.99,
+    "armor-all-glass-wipes-90": 14.05,
+    "sminder-1200gsm-drying-towels": 26.99,
+    "chemical-guys-waffle-glass-towel": 10.99,
+    "ecoangel-rechargeable-led-road-flares": 19.99
+  }
 }

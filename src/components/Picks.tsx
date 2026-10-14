@@ -2,6 +2,7 @@ import { getPicks, PICK_NOTE } from "@/data/top10";
 import type { Product } from "@/data/types";
 import { AffiliateButton } from "./AffiliateButton";
 import { TierBadge } from "./TierBadge";
+import ImagePlaceholder from "./ImagePlaceholder";
 const LBL = { best: "Best Overall", premium: "Premium Pick", value: "Value Pick" } as const;
 export function Picks({ category }: { category: string }) {
   const k = getPicks(category);
@@ -14,7 +15,7 @@ export function Picks({ category }: { category: string }) {
       <div className="grid">{rows.map(([kind, p]) => (
         <article key={kind} className="card" data-pick={kind}>
           <span className="badge">{LBL[kind]}{PICK_NOTE[p.slug] ? ` · ${PICK_NOTE[p.slug]}` : ""}</span>
-          {p.imageUrl && <img src={p.imageUrl} alt={p.name} />}
+          {p.imageUrl ? (<img src={p.imageUrl} alt={p.name} />) : (<ImagePlaceholder name={p.name} category={p.category} style={{ aspectRatio: "auto" }} />)}
           <h3><a href={`#${p.slug}`}>{p.name}</a> <TierBadge tier={p.tier} /></h3>
           <p className="note">{p.tagline}</p>
           <AffiliateButton asin={p.amazonAsin} name={p.name} />

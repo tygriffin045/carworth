@@ -3,25 +3,18 @@ import { products } from "./products";
 
 /** Ordered Top 10 per category. Best Overall is #1. */
 export const TOP10: Record<string, string[]> = {
-  "dash-cams": ["viofo", "viofo-a229-plus-dash-cam-front", "galphi-4k-dash-cam-front", "rove-r2-4k-dual-dash-cam", "70mai-4k-dash-cam-front-and", "garmin-dash-cam-mini-3", "redtiger-4k-starvis-2-dashcam-front", "terunsoul-4k-4k-1080p-3-channel", "zmopo-360-view-4-channel-dash"],
-  "roadside": ["noco", "gooloo-a3-12v-3000a-portable-jump", "astroai-l7-tire-inflator-portable-air", "fanttik", "tender", "s-zevzo-et03-car-jump-starter", "oxilam-jump-starter-6000a-for-all", "noco-genius2d-2a-12v-onboard-battery"],
-  "cabin": ["iottie", "wekefon-for-magsafe-car-mount-charger", "lamicall-2026-wider-clamp-metal-hook", "kenhao-67w-3-port-super-fast", "andery-compact-foldable-car-phone-holder", "vanmass-car-phone-holder-2026-ultimate", "lisen-retractable-car-charger", "junvang-usb-c-car-charger"],
-  "diagnostics": ["blue", "obdlink-mx-obd2-bluetooth-scanner-for", "ancel-ad310-classic-enhanced-universal-obd", "ancel-ad410-enhanced-obd2-scanner", "veepeak-obdcheck-ble-bluetooth-obd-ii", "fixd-bluetooth-obd2-scanner", "obdlink-ex-forscan-obd-adapter"],
-  "cleaning": ["chemical-guys-streak-free-glass-window", "astroai-21-extra-long-windshield-cleaner", "usanooks-microfiber-cleaning-cloth-grey-12", "invisible-glass-auto-glass-cleaner-foaming", "armor-all-multi-purpose-car-cleaner", "sycoodeal-car-vacuum-cleaner-mini-vacuum"],
-  "safety": ["resqme-the-original-compact-emergency-keychain", "everlit-survival-car-emergency-kit", "amazon-basics-emergency-escape-tool", "nealia-magnetic-wireless-beacon-light", "swiss-safe-2-in-1-348", "mcbazel-4-pcs-wireless-rechargeable-magnetic", "sinsen-car-safety-hammer-set-of", "smosun-safehammer-2026-upgraded-safe-hammer", "lianxin-car-roadside-emergency-kit-with"],
+  "dash-cams": ["viofo", "viofo-a229-plus-dash-cam-front", "galphi-4k-dash-cam-front", "rove-r2-4k-dual-dash-cam", "70mai-4k-dash-cam-front-and", "garmin-dash-cam-mini-3", "redtiger-4k-starvis-2-dashcam-front", "terunsoul-4k-4k-1080p-3-channel", "zmopo-360-view-4-channel-dash", "veement-v300-1296p-dash-cam"],
+  "roadside": ["noco", "gooloo-a3-12v-3000a-portable-jump", "astroai-l7-tire-inflator-portable-air", "fanttik", "tender", "s-zevzo-et03-car-jump-starter", "oxilam-jump-starter-6000a-for-all", "noco-genius2d-2a-12v-onboard-battery", "clore-jump-n-carry-jnc660", "schumacher-sc1280-battery-charger"],
+  "cabin": ["iottie", "wekefon-for-magsafe-car-mount-charger", "lamicall-2026-wider-clamp-metal-hook", "kenhao-67w-3-port-super-fast", "andery-compact-foldable-car-phone-holder", "vanmass-car-phone-holder-2026-ultimate", "lisen-retractable-car-charger", "junvang-usb-c-car-charger", "anker-323-car-charger", "andobil-magsafe-vent-mount-pro"],
+  "diagnostics": ["blue", "obdlink-mx-obd2-bluetooth-scanner-for", "ancel-ad310-classic-enhanced-universal-obd", "ancel-ad410-enhanced-obd2-scanner", "veepeak-obdcheck-ble-bluetooth-obd-ii", "fixd-bluetooth-obd2-scanner", "obdlink-ex-forscan-obd-adapter", "foxwell-nt301-obd2-scanner", "autel-al319-code-reader", "foxwell-nt604-elite-scanner"],
+  "cleaning": ["chemical-guys-streak-free-glass-window", "astroai-21-extra-long-windshield-cleaner", "usanooks-microfiber-cleaning-cloth-grey-12", "invisible-glass-auto-glass-cleaner-foaming", "armor-all-multi-purpose-car-cleaner", "sycoodeal-car-vacuum-cleaner-mini-vacuum", "thisworx-corded-car-vacuum", "armor-all-glass-wipes-90", "sminder-1200gsm-drying-towels", "chemical-guys-waffle-glass-towel"],
+  "safety": ["resqme-the-original-compact-emergency-keychain", "everlit-survival-car-emergency-kit", "amazon-basics-emergency-escape-tool", "nealia-magnetic-wireless-beacon-light", "swiss-safe-2-in-1-348", "mcbazel-4-pcs-wireless-rechargeable-magnetic", "sinsen-car-safety-hammer-set-of", "smosun-safehammer-2026-upgraded-safe-hammer", "lianxin-car-roadside-emergency-kit-with", "ecoangel-rechargeable-led-road-flares"],
 };
 
 /** Short Top lists (7-9) allowed only with a recorded reason. PENDING Maya's acceptance (spec exception). */
-export const TOP10_SHORT: Record<string, string> = {
-  "dash-cams": "9 items: dropped the REDTIGER F7NP as a near-duplicate 4K front+rear kit (accepted by Maya, car review)",
-  roadside: "8 items: dropped a duplicate GOOLOO A3 listing and the near-twin Battery Tender Junior 750mA; no other verified roadside listing on file (accepted by Maya)",
-  cabin: "8 items: dropped a near-duplicate 67W charger and the WeatherTech liner (fits 2007-13 Wranglers only); no universal-fit liner on file (accepted by Maya)",
-  diagnostics: "7 items: dropped the three radar detectors (not diagnostics; legal restrictions) (accepted by Maya)",
-  cleaning: "6 items: dropped Griot's/Rain-X (no listing data) and two near-duplicate microfiber packs (accepted by Maya, allowed to shrink)",
-  safety: "9 items: dropped the Aukmak strobe 4-pack as a near-duplicate of the Mcbazel set (accepted by Maya)",
-};
+export const TOP10_SHORT: Record<string, string> = {};
 /** Lowest accepted list length per category when below 7 (Maya: short lists may shrink after dedupe). */
-export const TOP10_MIN: Record<string, number> = { cleaning: 6 };
+export const TOP10_MIN: Record<string, number> = {};
 
 /** Extra pick labels shown next to the role (Maya's calls). */
 export const PICK_NOTE: Record<string, string> = {

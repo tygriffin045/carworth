@@ -73,3 +73,6 @@ img{max-width:100%;height:auto}
 .giftlink { margin:16px 0; padding:12px 16px; border:1px solid var(--line); border-radius:14px; background:#fff; }
 .giftlink a { font-weight:700; }
 .guide .award .tier { margin-left:6px; }
+
+/* image placeholder (no product photo yet) */
+.card .wg-ph{height:140px}.guide .wg-ph{height:260px}

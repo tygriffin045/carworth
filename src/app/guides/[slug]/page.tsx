@@ -4,6 +4,7 @@ import { guides } from "@/data/guides";
 import { products, categories, url, DOMAIN, SITE } from "@/data/site";
 import { StickyBar } from "@/components/StickyBar";
 import { TierBadge } from "@/components/TierBadge";
+import ImagePlaceholder from "../../../components/ImagePlaceholder";
 
 export function generateStaticParams() { return guides.map((g) => ({ slug: g.slug })); }
 
@@ -50,7 +51,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     {picks.map(({ pick, product }, i) => <section key={product.slug} id={`pick-${product.slug}`} className="pick">
       <span className="award">{i + 1}. {pick.award}{isGift && <TierBadge tier={product.tier} />}</span>
       <h2>{product.name}</h2>
-      {product.imageUrl && <a href={url(product)} rel="sponsored nofollow noopener" target="_blank" className="shot" aria-label={`Check price on Amazon for ${product.name}`}><img src={product.imageUrl} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>}
+      {product.imageUrl ? (<a href={url(product)} rel="sponsored nofollow noopener" target="_blank" className="shot" aria-label={`Check price on Amazon for ${product.name}`}><img src={product.imageUrl} alt={product.name} loading={i === 0 ? "eager" : "lazy"}/></a>) : (<ImagePlaceholder name={product.name} category={product.category} style={{ aspectRatio: "auto" }} />)}
       <p>{pick.verdict}</p>
       <div className="pc">
         <div className="pros"><h3>Pros</h3><ul>{pick.pros.map((x) => <li key={x}>{x}</li>)}</ul></div>
