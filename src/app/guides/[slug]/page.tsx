@@ -1,3 +1,4 @@
+import { meta, BreadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides } from "@/data/guides";
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = guides.find((x) => x.slug === slug);
   if (!g) return {};
-  return { title: g.title, description: g.description, alternates: { canonical: `/guides/${g.slug}` } };
+  return meta({ path: `/guides/${g.slug}`, title: g.title, description: g.description, type: "article" });
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,7 +24,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const product = products.find((p) => p.slug === pick.slug);
     return product ? [{ pick, product }] : [];
   });
-  const cat = categories.find((c) => c.slug === guide.category);
+  // Gift guides span categories: link the Top 10 of the category most of their picks come from.
+  const counts = new Map<string, number>();
+  for (const { product } of picks) counts.set(product.category, (counts.get(product.category) ?? 0) + 1);
+  const mainCat = [...counts].sort((a, b) => b[1] - a[1])[0]?.[0];
+  const cat = categories.find((c) => c.slug === guide.category) ?? categories.find((c) => c.slug === mainCat);
   const others = guides.filter((g) => g.slug !== guide.slug);
   const isGift = guide.slug.startsWith("gifts-");
   const lead = picks[0]?.product;
@@ -34,6 +39,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   ];
   if (guide.faqs.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: guide.faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) });
   return <article className="guide">
+    <BreadcrumbLd trail={[["Guides", "/guides"], [guide.title, `/guides/${guide.slug}`]]} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
     <p className="note small"><Link href="/guides">Guides</Link> · {guide.readingTime} · {guide.publishedAt}</p>
     <h1>{guide.title}</h1>

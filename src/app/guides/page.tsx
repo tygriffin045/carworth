@@ -1,16 +1,13 @@
+import { meta, BreadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import { guides } from "@/data/guides";
 import { products, SITE } from "@/data/site";
 import ImagePlaceholder from "../../components/ImagePlaceholder";
 
-export const metadata = {
-  title: "Buying guides",
-  description: `${SITE} buying guides: ranked picks with pros, cons, and who each one is for.`,
-  alternates: { canonical: "/guides" },
-};
+export const metadata = meta({ path: "/guides", title: "Buying guides", description: `${SITE} buying guides: ranked picks with pros, cons, and who each one is for.` });
 
 export default function Page() {
-  return <div>
+  return <div><BreadcrumbLd trail={[["Guides", "/guides"]]} />
     <p className="note">Buying guides</p>
     <h1>Guides</h1>
     <p>Ranked picks from products already on this site, with the tradeoffs spelled out.</p>

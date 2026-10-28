@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { categories, compares, DESC, DOMAIN } from "@/data/site";
+import { meta } from "@/lib/seo";
+import { categories, compares, DESC, DOMAIN, TITLE } from "@/data/site";
 import { guides } from "@/data/guides";
 import { getHomeTop10, PICK_NOTE } from "@/data/top10";
 import { AffiliateButton } from "@/components/AffiliateButton";
@@ -40,4 +41,7 @@ export default function Page() {
 }
 
 // Root canonical rendered directly: Next metadata strips the trailing slash from the root URL, and the sitemap lists it with one.
-export const metadata = {};
+
+// Canonical for "/" is the <link> above (with trailing slash), so drop the metadata one.
+const { alternates: _a, ...homeMeta } = meta({ path: "/", title: null, description: DESC });
+export const metadata = { ...homeMeta, title: { absolute: TITLE } };

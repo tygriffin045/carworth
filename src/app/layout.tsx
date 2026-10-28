@@ -31,6 +31,7 @@ export const metadata = {
   verification: { google: "FN6qrZKJIgH6gtQS2rIEQe-jjDmKVIUoBq3DwQUX8yk" },
   title: { default: SITE, template: "%s · " + SITE },
   description: DESC,
+  openGraph: { type: "website", siteName: SITE, locale: "en_US" },
   metadataBase: new URL(DOMAIN),
 };
 
